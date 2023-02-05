@@ -16,6 +16,11 @@ def coins_index(request):
     coins = Coin.objects.all()
     return render(request, 'coins/index.html', { 'coins': coins })
 
+# Define the coins detail view
+def coins_detail(request, coin_id):
+    coin = Coin.objects.get(id=coin_id)
+    return render(request, 'coins/detail.html', { 'coin': coin })
+
 # Define the influencers index view
 def influencers_index(request):
     influencers = Influncer.objects.all()

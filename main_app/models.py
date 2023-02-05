@@ -22,7 +22,7 @@ class Coin(models.Model):
     price = models.FloatField(default=0.00)
     website = models.CharField(max_length=250, blank=True)
     api_name = models.CharField(max_length=250, blank=True)
-    image_url = models.CharField(max_length=50, blank=True)
+    image_url = models.CharField(max_length=250, blank=True)
     influncer = models.ManyToManyField(Influncer, blank=True)
     
     class Meta:
