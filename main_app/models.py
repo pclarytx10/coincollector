@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Influncer(models.Model):
+class Influencer(models.Model):
     name = models.CharField(max_length=50)
     real_name = models.CharField(max_length=100, blank=True)
     website = models.CharField(max_length=250, blank=True)
@@ -23,7 +23,7 @@ class Coin(models.Model):
     website = models.CharField(max_length=250, blank=True)
     api_name = models.CharField(max_length=250, blank=True)
     image_url = models.CharField(max_length=250, blank=True)
-    influncer = models.ManyToManyField(Influncer, blank=True)
+    influencer = models.ManyToManyField(Influencer, blank=True)
     
     class Meta:
         ordering = ('name',)

@@ -7,4 +7,5 @@ urlpatterns = [
     path('coins/', views.coins_index, name='index'),
     path('coins/<int:coin_id>/', views.coins_detail, name='detail'),
     path('influencers/', views.influencers_index, name='index'),
+    path('influencers/<int:influencer_id>/', views.influencers_detail, name='inf_detail'),
 ]

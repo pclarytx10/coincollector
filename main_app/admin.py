@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Influncer, Coin
+from .models import Influencer, Coin
 
 # Register your models here.
-admin.site.register(Influncer)
+admin.site.register(Influencer)
 admin.site.register(Coin)

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Coin, Influncer
+from .models import Coin, Influencer
 
 
 # Create your views here.
@@ -23,5 +23,10 @@ def coins_detail(request, coin_id):
 
 # Define the influencers index view
 def influencers_index(request):
-    influencers = Influncer.objects.all()
+    influencers = Influencer.objects.all()
     return render(request, 'influencers/index.html', { 'influencers': influencers })
+
+#Define the influencers detail view
+def influencers_detail(request, influencer_id):
+    influencer = Influencer.objects.get(id=influencer_id)
+    return render(request, 'influencers/detail.html', { 'influencer': influencer })
