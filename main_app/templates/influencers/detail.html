@@ -11,6 +11,10 @@
         <p> Real Name: {{ influencer.real_name }} </p>
         <p> Website: {{ influencer.website }} </p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'influencers_update' influencer.id %}">Edit</a>
+        <a href="{% url 'influencers_delete' influencer.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}

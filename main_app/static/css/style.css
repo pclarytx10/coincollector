@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: linear-gradient(320deg, #1565c0 0%, #90caf9 30%, #fdfdfd 70%);
+}
+
+main {
+flex: 1 0 auto;
+}
+
+footer {
+padding-top: 0;
+text-align: right;
+}
+
+.coin_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* h1 {
+    color: red;
+} */

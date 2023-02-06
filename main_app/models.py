@@ -13,12 +13,12 @@ class Influencer(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('toys_detail', kwargs={'toy_id': self.id})
+        return reverse('influencers_detail', kwargs={'influencer_id': self.id})
 
 class Coin(models.Model):
     name = models.CharField(max_length=50)
     symbol = models.CharField(max_length=10, default='BTC', blank=True)
-    description = models.TextField(max_length=400, blank=True)
+    description = models.TextField(max_length=600, blank=True)
     price = models.FloatField(default=0.00)
     website = models.CharField(max_length=250, blank=True)
     api_name = models.CharField(max_length=250, blank=True)
@@ -32,4 +32,4 @@ class Coin(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('toys_d1etail', kwargs={'toy_id': self.id})
+        return reverse('coins_detail', kwargs={'coin_id': self.id})

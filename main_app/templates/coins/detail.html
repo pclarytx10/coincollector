@@ -12,6 +12,10 @@
         <p> Price: {{ coin.price }} </p>
         <p> Description: {{ coin.description }} </p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'coins_update' coin.id %}">Edit</a>
+        <a href="{% url 'coins_delete' coin.id %}">Delete</a>
+    </div>
 </div>
 
 {%endblock%}

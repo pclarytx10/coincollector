@@ -1,5 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
+{% comment %} TODO: Add jquery script and convert nav menu to materialize dropdown menu {% endcomment %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +19,7 @@
   <body>
     <header class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper  blue darken-3">
           <ul>
             <li>
               <a href="/" class="left brand-logo">&nbsp;&nbsp;CoinCollector</a>
@@ -27,9 +28,9 @@
           <ul class="right">
             <li><a href="/about">About</a></li>
             {% if user.is_authenticated %}
-              {% comment %} <li><a href="{% url 'coins_create' %}">Add a Coin</a></li> {% endcomment %}
+              <li><a href="{% url 'coins_create' %}">Add a Coin</a></li>
               <li><a href="/coins">View All My Coins</a></li>
-              {% comment %} <li><a href="{% url 'influencers_create' %}">Add a Influencer</a></li> {% endcomment %}
+              <li><a href="{% url 'influencers_create' %}">Add an Influencer</a></li>
               <li><a href="/influencers">View All Influencers</a></li>
               <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
@@ -41,7 +42,7 @@
       </nav>
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
+    <footer class="page-footer blue darken-3">
       <div class="right">
         All Rights Reserved, &copy; 2023 Coin Collector &nbsp;
       </div>

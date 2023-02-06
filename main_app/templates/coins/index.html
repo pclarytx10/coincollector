@@ -8,10 +8,13 @@
 <a href="{% url 'detail' coin.id %}"> 
     <div class="card-content">
         <span class="card-title">{{ coin.name }}</span>
-        <p>Name: {{ coin.name }}</p>
-        <p>Symbol: {{ coin.symbol }}</p>
-        <p>Price: {{ coin.price }}</p>
-        <p>Description: {{ coin.description }}</p>
+        <div class="coin_card">
+            <div>
+                <p>Symbol: {{ coin.symbol }}</p>
+                <p>Price: {{ coin.price }}</p>
+            </div>
+            <img src="{{ coin.image_url }}" alt="coin image">
+        </div>
     </div>
 </a>
 </div>
