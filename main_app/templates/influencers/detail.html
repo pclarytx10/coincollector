@@ -15,11 +15,41 @@
         <div class="col s12">
             <p> Bio: {{ influencer.bio }} </p>
         </div>
+        <div class="col s12">
+            <h8> <b> Social Media: </b> </h8>
+            <hr>
+            <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Site</th>
+                    <th>URL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for media in influencer.media_set.all %}
+                  <tr>
+                    <td>{{ media.get_name_display }}</td>
+                    <td><a href="{{ media.url }}">{{ media.url }}</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            <form action="{% url 'add_media' influencer.id %}" method="POST">
+                {% csrf_token %}
+                {{ media_form.as_p }}
+                <input type="submit" value="Add Media" class="btn-small blue">
+            </form>
+        </div>
         <div class="col s4 card-action">
             <a href="{% url 'influencers_update' influencer.id %}">Edit</a>
             <a href="{% url 'influencers_delete' influencer.id %}">Delete</a>
         </div>
     </div>
 </div>
+
+<script>
+    var selectEl = document.getElementById('id_name');
+    M.FormSelect.init(selectEl);
+  </script>
 
 {% endblock %}

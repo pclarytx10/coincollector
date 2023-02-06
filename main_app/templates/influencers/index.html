@@ -5,7 +5,7 @@
 {% for influencer in influencers %}
 
 <div class="card">
-<a href="{% url 'inf_detail' influencer.id %}"> 
+<a href="{% url 'influencers_detail' influencer.id %}"> 
     <div class="card-content">
         <span class="card-title">{{ influencer.name }}</span>
         <div class="coin_card">

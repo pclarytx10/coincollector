@@ -14,6 +14,10 @@ padding-top: 0;
 text-align: right;
 }
 
+form {
+    margin: 1rem;
+}
+
 .coin_card {
     display: flex;
     flex-direction: row;
@@ -36,3 +40,4 @@ text-align: right;
     height: 50px;
     margin-right: 10px;
 }
+

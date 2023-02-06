@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Coin, Influencer
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import MediaForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 # Import login_required to protect def views
@@ -80,7 +81,12 @@ def influencers_index(request):
 @login_required
 def influencers_detail(request, influencer_id):
     influencer = Influencer.objects.get(id=influencer_id)
-    return render(request, 'influencers/detail.html', { 'influencer': influencer })
+    # instantiate MediaForm to be rendered in the template
+    media_form = MediaForm()
+    return render(request, 'influencers/detail.html', { 
+        'influencer': influencer,
+        'media_form': media_form 
+    })
 
 # Define the influencers create view
 class InfluencerCreate(LoginRequiredMixin, CreateView):
@@ -107,6 +113,21 @@ class InfluencerDelete(LoginRequiredMixin, DeleteView):
     model = Influencer
     success_url = '/influencers/'
 
+# Define the add media view
+@login_required
+def add_media(request, influencer_id):
+    # create the ModelForm using the data in request.POST
+    form = MediaForm(request.POST)
+    # validate the form
+    if form.is_valid():
+        # don't save the form to the db until it
+        # has the influencer_id assigned
+        new_media = form.save(commit=False)
+        new_media.influencer_id = influencer_id
+        new_media.save()
+    return redirect('influencers_detail', influencer_id=influencer_id)
+
+# Define the signup view
 def signup(request):
   error_message = ''
   # If the request method is POST, this is a sign-up attempt

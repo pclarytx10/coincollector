@@ -1,7 +1,7 @@
-# CryptoList
+# CoinCollector
 --- 
 
-CoinCollector is an early stage beta for a crypto currency research and portfolio management solution. The primary purpose of this app is to beta demo Python and Django interactions. This project is based on an automated spreadsheet used to manage cryptocurrency research, price monitoring, and portfolio management over a six year period from 2016 to 2022. 
+CoinCollector is prototype for a crypto currency research and portfolio management solution. The primary purpose of this app is to beta demo Python and Django interactions. This project is based on an automated spreadsheet used to manage cryptocurrency research, price monitoring, and portfolio management over a six year period from 2016 to 2022. 
 
 ## Technologies Used: 
 --- 
@@ -31,12 +31,12 @@ A live version of this app is hosted on <TBD>
 - [x] Authentication
   - [X] Login/Logout
   - [X] Sign Up
-- [ ] 3 Models
+- [X] 3 Models
   - [x] Coin
   - [x] Influencer
-  - [ ] Media
-- [ ] One-to-many relationship
-  - [ ] Influencer to Media
+  - [X] Media
+- [X] One-to-many relationship
+  - [X] Influencer to Media
 - [X] Many-to-many relationship
   - [X] Coin to Influencer
 - [x] Admin View
@@ -60,9 +60,9 @@ App will be refactored for use in a future Django project.
 ## Project MVP Description and Rubric
 --- 
 
-- [ ] One-to-many relationship (ex: cats to feedings)
+- [X] One-to-many relationship (ex: cats to feedings)
 - [x] Many-to-many relationship (ex: cats to toys)
-- [ ] 3 Models (ex: cats, feedings, toys)
+- [X] 3 Models (ex: cats, feedings, toys)
 - [x] Admin View
 - [x] Authentication
 
