@@ -26,16 +26,16 @@
           </ul>
           <ul class="right">
             <li><a href="/about">About</a></li>
-            {% comment %} {% if user.is_authentiCoined %} {% endcomment %}
+            {% if user.is_authenticated %}
               {% comment %} <li><a href="{% url 'coins_create' %}">Add a Coin</a></li> {% endcomment %}
               <li><a href="/coins">View All My Coins</a></li>
               {% comment %} <li><a href="{% url 'influencers_create' %}">Add a Influencer</a></li> {% endcomment %}
               <li><a href="/influencers">View All Influencers</a></li>
-              {% comment %} <li><a href="{% url 'logout' %}">Log Out</a></li> {% endcomment %}
-            {% comment %} {% else %} {% endcomment %}
-              {% comment %} <li><a href="{% url 'login' %}">Log In</a></li> {% endcomment %}
-              {% comment %} <li><a href="{% url 'signup' %}">Sign Up</a></li> {% endcomment %}
-            {% comment %} {% endif %} {% endcomment %}
+              <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+              <li><a href="{% url 'login' %}">Log In</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
