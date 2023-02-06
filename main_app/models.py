@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Influencer(models.Model):
     name = models.CharField(max_length=50)
     real_name = models.CharField(max_length=100, blank=True)
+    bio = models.TextField(max_length=600, blank=True)
     website = models.CharField(max_length=250, blank=True)
     image_url = models.CharField(max_length=250, blank=True)
 

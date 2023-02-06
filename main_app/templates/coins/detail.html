@@ -3,18 +3,68 @@
 <h1> {{ coin.name }} Details </h1>
 
 <div class="row">
-    <div class="col-md-4">
-        <img src="{{ coin.image_url }}" alt="{{ coin.name }}" class="img-fluid">
-    </div>
-    <div class="col-md-8">
+
+    <div class="col s12">
         {% comment %} <h2> {{ coin.name }} </h2> {% endcomment %}
-        <p> Symbol: {{ coin.symbol }} </p>
-        <p> Price: {{ coin.price }} </p>
-        <p> Description: {{ coin.description }} </p>
+        <div class="col s8">
+            <p> Symbol: {{ coin.symbol }} </p>
+            <p> Price: {{ coin.price }} </p>
+        </div>
+        <div class="col s4">
+            <img src="{{ coin.image_url }}" alt="{{ coin.name }}" class="img-fluid">
+        </div>
+        <div class="col s12">
+            <p> Description: {{ coin.description }} </p>
+        </div>
+        <div class="col s4 card-action">
+            <a href="{% url 'coins_update' coin.id %}">Edit</a>
+            <a href="{% url 'coins_delete' coin.id %}">Delete</a>
+        </div>
     </div>
-    <div class="card-action">
-        <a href="{% url 'coins_update' coin.id %}">Edit</a>
-        <a href="{% url 'coins_delete' coin.id %}">Delete</a>
+    <div class="row">
+        <div class="col s6">
+            <hr>
+            <!-- influencers a coin has -->
+            <h5>{{ coin.name }}'s Influencers</h5>
+            {% if coin.influencer.count %}
+            {% for influencer in coin.influencer.all %}
+            <div class="card">
+                <div class="card-content inf-card">
+                    <span class="card-title">
+                        {{ influencer.name }} 
+                    </span>
+                    <img src="{{ influencer.image_url }}" alt="{{ influencer.name }}">
+                    <form action="{% url 'unassoc_influencer' coin.id influencer.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Remove" class="btn red">
+                    </form> 
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h8>{{ coin.name }} doesn't have any influencers yet 😞</h8>
+            {% endif %}
+        </div>
+        <div class="col s6">
+            <h5>Available Influencers</h5>
+            {% if influencers.count %}
+            {% for influencer in influencers %}
+            <div class="card">
+              <div class="card-content inf-card">
+                <span class="card-title">
+                    {{ influencer.name }} 
+                </span>
+                <img src="{{ influencer.image_url }}" alt="{{ influencer.name }}">
+                <form action="{% url 'assoc_influencer' coin.id influencer.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Add" class="btn">
+                </form>  
+            </div>
+            {% endfor %}
+            {% else %}
+            <h8>{{ coin.name }} Already Has All Influencers Available</h8>
+            {% endif %}
+        </div>
     </div>
 </div>
 

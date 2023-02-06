@@ -27,7 +27,23 @@ def coins_index(request):
 @login_required
 def coins_detail(request, coin_id):
     coin = Coin.objects.get(id=coin_id)
-    return render(request, 'coins/detail.html', { 'coin': coin })
+    influencers_coin_doesnt_have = Influencer.objects.exclude(id__in = coin.influencer.all().values_list('id'))
+    return render(request, 'coins/detail.html', { 
+        'coin': coin,
+        'influencers': influencers_coin_doesnt_have 
+    })
+
+# Define associate influencer with coin
+@login_required
+def assoc_influencer(request, coin_id, influencer_id):
+  Coin.objects.get(id=coin_id).influencer.add(influencer_id)
+  return redirect('detail', coin_id=coin_id)
+
+# Define unassociate influencer with coin
+@login_required
+def unassoc_influencer(request, coin_id, influencer_id):
+    Coin.objects.get(id=coin_id).influencer.remove(influencer_id)
+    return redirect('detail', coin_id=coin_id)
 
 # Define the coins create view
 class CoinCreate(LoginRequiredMixin, CreateView):
@@ -90,7 +106,7 @@ class InfluencerUpdate(LoginRequiredMixin, UpdateView):
 class InfluencerDelete(LoginRequiredMixin, DeleteView):
     model = Influencer
     success_url = '/influencers/'
-    
+
 def signup(request):
   error_message = ''
   # If the request method is POST, this is a sign-up attempt

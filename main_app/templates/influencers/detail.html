@@ -3,17 +3,22 @@
 <h1> {{ influencer.name }} Details </h1>
 
 <div class="row">
-    <div class="col-md-4">
-        <img src="{{ influencer.image_url }}" alt="{{ influencer.name }}" class="img-fluid">
-    </div>
-    <div class="col-md-8">
-        {% comment %} <h2> {{ influencer.name }} </h2> {% endcomment %}
-        <p> Real Name: {{ influencer.real_name }} </p>
-        <p> Website: {{ influencer.website }} </p>
-    </div>
-    <div class="card-action">
-        <a href="{% url 'influencers_update' influencer.id %}">Edit</a>
-        <a href="{% url 'influencers_delete' influencer.id %}">Delete</a>
+    <div class="col s12">
+        <div class="col s8">
+            {% comment %} <h2> {{ influencer.name }} </h2> {% endcomment %}
+            <p> Real Name: {{ influencer.real_name }} </p>
+            <p> Website: {{ influencer.website }} </p>
+        </div>
+        <div class="col s4">
+            <img src="{{ influencer.image_url }}" alt="{{ influencer.name }}" class="img-fluid">
+        </div>
+        <div class="col s12">
+            <p> Bio: {{ influencer.bio }} </p>
+        </div>
+        <div class="col s4 card-action">
+            <a href="{% url 'influencers_update' influencer.id %}">Edit</a>
+            <a href="{% url 'influencers_delete' influencer.id %}">Delete</a>
+        </div>
     </div>
 </div>
 

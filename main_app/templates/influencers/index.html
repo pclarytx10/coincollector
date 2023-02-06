@@ -8,10 +8,13 @@
 <a href="{% url 'inf_detail' influencer.id %}"> 
     <div class="card-content">
         <span class="card-title">{{ influencer.name }}</span>
-        <p>Name: {{ influencer.name }}</p>
-        <p>Real Name: {{ influencer.real_name }}</p>
-        <p>Website: {{ influencer.website }}</p>
-        <p>Image: <img src="{{ influencer.image_url }}" alt="{{ influencer.name }}"></p>
+        <div class="coin_card">
+            <div>
+                <p>Name: {{ influencer.name }}</p>
+                <p>Real Name: {{ influencer.real_name }}</p>
+            </div>
+            <img src="{{ influencer.image_url }}" alt="{{ influencer.name }}">
+        </div>
     </div>
 </a>
 </div>
